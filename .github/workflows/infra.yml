@@ -161,8 +161,8 @@ jobs:
 
       - run: terraform init
 
-      # - name: Terraform Apply
-      #   id: apply
-      #   run: terraform apply -no-color -auto-approve
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -no-color -auto-approve
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
