@@ -3,13 +3,14 @@
 >This is a Terraform project that deploys an EKS cluster along with a VPC, KMS(for encryption) and S3 & Dynamodb for backend management. The cluster has a managed node group with `karpenter` installed for provisioning new nodes based on demand.
 
 ## Technologies:
-- Terraform
+- Hashicorp Terraform
 - AWS VPC
 - AWS KMS
 - AWS EKS
 - AWS S3
 - AWS Dynamodb
 - Karpenter
+- Hashicorp Vault
 
 
 ## Tasks:
