@@ -1,4 +1,4 @@
-# Deploy AWS EKS Cluster using Terraform
+# Deploy AWS EKS Cluster using Karpenter via Terraform
 
 >This is a Terraform project that deploys an EKS cluster along with a VPC, KMS(for encryption) and S3 & Dynamodb for backend management. The cluster has a managed node group with `karpenter` installed for provisioning new nodes based on demand.
 
