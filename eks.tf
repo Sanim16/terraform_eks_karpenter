@@ -2,8 +2,7 @@
 # EKS
 ###############################################################################
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=a224334fc8000dc8728971dff8adad46ceb7a8a1" # commit hash of version 20.29.0
 
   cluster_name    = var.cluster_name
   cluster_version = var.cluster_version
@@ -104,8 +103,8 @@ module "eks" {
   }
 
   tags = {
-    Environment = "dev"
-    Terraform   = "true"
+    Environment              = "dev"
+    Terraform                = "true"
     "karpenter.sh/discovery" = var.cluster_name
   }
 }
@@ -120,7 +119,7 @@ module "karpenter" {
 
   enable_v1_permissions = true
 
-  enable_pod_identity = true
+  enable_pod_identity             = true
   create_pod_identity_association = true
 
   # Used to attach additional IAM policies to the Karpenter node IAM role

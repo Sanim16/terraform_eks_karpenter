@@ -1,6 +1,6 @@
 # Create VPC using a module
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=c182453f881ae77afd14c826dc8e23498b957907" # commit hash of version 5.7.1
 
   name = var.vpc_name
   cidr = var.vpc_cidr
@@ -41,6 +41,7 @@ resource "aws_security_group" "terraform-dev-vpc" {
   vpc_id      = module.vpc.vpc_id
 
   egress {
+    description = "Allow egress to everywhere"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -48,13 +49,14 @@ resource "aws_security_group" "terraform-dev-vpc" {
   }
 
   tags = {
-    Name = "terraform-${var.vpc_name}"
+    Name                     = "terraform-${var.vpc_name}"
     "karpenter.sh/discovery" = var.cluster_name
   }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-ssh" {
   security_group_id = aws_security_group.terraform-dev-vpc.id
+  description       = "Ingress rule for SSH"
 
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 22
@@ -64,6 +66,7 @@ resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-ssh" {
 
 resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-http" {
   security_group_id = aws_security_group.terraform-dev-vpc.id
+  description       = "Ingress rule for HTTP"
 
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 80
@@ -73,6 +76,7 @@ resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-http" {
 
 resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-https" {
   security_group_id = aws_security_group.terraform-dev-vpc.id
+  description       = "Ingress rule for HTTPS"
 
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 443
