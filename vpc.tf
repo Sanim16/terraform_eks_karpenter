@@ -56,7 +56,7 @@ resource "aws_security_group" "terraform-dev-vpc" {
 
 resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-ssh" {
   security_group_id = aws_security_group.terraform-dev-vpc.id
-  description = "Ingress rule for SSH"
+  description       = "Ingress rule for SSH"
 
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 22
@@ -66,7 +66,7 @@ resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-ssh" {
 
 resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-http" {
   security_group_id = aws_security_group.terraform-dev-vpc.id
-  description = "Ingress rule for HTTP"
+  description       = "Ingress rule for HTTP"
 
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 80
@@ -76,7 +76,7 @@ resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-http" {
 
 resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-https" {
   security_group_id = aws_security_group.terraform-dev-vpc.id
-  description = "Ingress rule for HTTPS"
+  description       = "Ingress rule for HTTPS"
 
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 443

@@ -73,7 +73,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
     enabled = true
   }
   server_side_encryption {
-    enabled = true
+    enabled     = true
     kms_key_arn = module.kms.key_arn # consider creating a seprate key for this
   }
 }
