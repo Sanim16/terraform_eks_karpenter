@@ -1,6 +1,6 @@
 # Create VPC using a module
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=c182453f881ae77afd14c826dc8e23498b957907" # commit hash of version 5.7.1
 
   name = var.vpc_name
   cidr = var.vpc_cidr
@@ -48,7 +48,7 @@ resource "aws_security_group" "terraform-dev-vpc" {
   }
 
   tags = {
-    Name = "terraform-${var.vpc_name}"
+    Name                     = "terraform-${var.vpc_name}"
     "karpenter.sh/discovery" = var.cluster_name
   }
 }
