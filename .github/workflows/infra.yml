@@ -16,7 +16,7 @@ env:
     AWS_REGION: ${{ secrets.AWS_REGION }}
     TF_VAR_user: ${{ secrets.TF_VAR_USER }}
     TF_VAR_owner: ${{ secrets.TF_VAR_OWNER }}
-    TF_VAR_aws_account_id: ${{ TF_VAR_AWS_ACCOUNT_ID }}
+    TF_VAR_aws_account_id: ${{ secrets.TF_VAR_AWS_ACCOUNT_ID }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
