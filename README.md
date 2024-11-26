@@ -1,7 +1,7 @@
 # Deploy AWS EKS Cluster using Karpenter via Terraform
 
 
-[![Github Actions](https://github.com/Sanim16/terraform_eks_karpenter/actions/workflows/actions.yml/badge.svg)](https://github.com/Sanim16/terraform_eks_karpenter/actions/workflows/actions.yml)
+[![Github Actions](https://github.com/Sanim16/terraform_eks_karpenter/actions/workflows/infra.yml/badge.svg)](https://github.com/Sanim16/terraform_eks_karpenter/actions/workflows/infra.yml)
 
 >This is a Terraform project that deploys an EKS cluster along with a VPC, KMS(for encryption) and S3 & Dynamodb for backend management. The cluster has a managed node group with `karpenter` installed for provisioning new nodes based on demand.
 
