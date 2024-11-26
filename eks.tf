@@ -39,7 +39,7 @@ module "eks" {
       instance_types = ["t3.medium"]
       # capacity_type  = "SPOT"
 
-      min_size     = 0
+      min_size     = 1
       max_size     = 3
       desired_size = 2
 
