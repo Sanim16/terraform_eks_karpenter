@@ -12,21 +12,6 @@ variable "cluster_version" {
   default     = "1.30"
 }
 
-variable "user" {
-  description = "AWS IAM user to give admin rights to via access entries"
-  # default = ""
-}
-
-variable "owner" {
-  description = "my aws IAM user to add to the admin rights to"
-  # default = ""
-}
-
-variable "aws_account_id" {
-  description = "my aws account id"
-  # default = ""
-}
-
 variable "vpc_name" {
   description = "The name of the vpc"
   default     = "dev-vpc"
