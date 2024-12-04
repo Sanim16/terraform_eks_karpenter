@@ -113,8 +113,8 @@ module "eks" {
 # EBS CSI
 ###############################################################################
 module "ebs_csi_irsa_role" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.44.0"
+  # source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
 
   role_name = "one-ebs-csi"
 
