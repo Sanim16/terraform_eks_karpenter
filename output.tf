@@ -18,10 +18,10 @@ output "vpc_id" {
   description = "The VPC ID"
 }
 
-output "security_group_id" {
-  value       = aws_security_group.terraform-dev-vpc.id
-  description = "The security group ID"
-}
+# output "security_group_id" {
+#   value       = aws_security_group.terraform-dev-vpc.id
+#   description = "The security group ID"
+# }
 
 output "cluster_endpoint" {
   description = "Endpoint for EKS control plane"
