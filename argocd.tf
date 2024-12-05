@@ -10,5 +10,5 @@ resource "helm_release" "argocd" {
   values = [
     file("./values/argocd-values.yaml"),
   ]
-  depends_on = [ helm_release.karpenter ]
+  depends_on = [helm_release.karpenter]
 }
