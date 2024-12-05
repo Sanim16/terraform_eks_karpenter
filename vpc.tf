@@ -1,39 +1,39 @@
-# # Create VPC using a module
-# module "vpc" {
-#   source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=c182453f881ae77afd14c826dc8e23498b957907" # commit hash of version 5.7.1
+# Create VPC using a module
+module "vpc" {
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=c182453f881ae77afd14c826dc8e23498b957907" # commit hash of version 5.7.1
 
-#   name = var.vpc_name
-#   cidr = var.vpc_cidr
+  name = var.vpc_name
+  cidr = var.vpc_cidr
 
-#   azs              = ["us-east-1a", "us-east-1b", "us-east-1c"]
-#   private_subnets  = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-#   public_subnets   = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
-#   database_subnets = ["10.0.201.0/24", "10.0.202.0/24", "10.0.203.0/24"]
-#   intra_subnets    = ["10.0.207.0/24", "10.0.208.0/24", "10.0.209.0/24"]
+  azs              = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  private_subnets  = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets   = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  database_subnets = ["10.0.201.0/24", "10.0.202.0/24", "10.0.203.0/24"]
+  intra_subnets    = ["10.0.207.0/24", "10.0.208.0/24", "10.0.209.0/24"]
 
-#   enable_nat_gateway     = true
-#   single_nat_gateway     = true
-#   enable_dns_hostnames   = true
-#   one_nat_gateway_per_az = false
+  enable_nat_gateway     = true
+  single_nat_gateway     = true
+  enable_dns_hostnames   = true
+  one_nat_gateway_per_az = false
 
-#   map_public_ip_on_launch = true
+  map_public_ip_on_launch = true
 
-#   tags = {
-#     Terraform   = "true"
-#     Environment = "dev"
-#     Name        = var.vpc_name
-#   }
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+    Name        = var.vpc_name
+  }
 
-#   public_subnet_tags = {
-#     "kubernetes.io/role/elb" = 1
-#   }
+  public_subnet_tags = {
+    "kubernetes.io/role/elb" = 1
+  }
 
-#   private_subnet_tags = {
-#     "kubernetes.io/role/internal-elb" = 1
-#     # Tags subnets for Karpenter auto-discovery
-#     "karpenter.sh/discovery" = var.cluster_name
-#   }
-# }
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = 1
+    # Tags subnets for Karpenter auto-discovery
+    "karpenter.sh/discovery" = var.cluster_name
+  }
+}
 
 # resource "aws_security_group" "terraform-dev-vpc" {
 #   name        = "terraform-${var.vpc_name}"
@@ -83,3 +83,13 @@
 #   ip_protocol = "tcp"
 #   to_port     = 443
 # }
+
+# # resource "aws_vpc_security_group_ingress_rule" "terra8080" {
+# #   security_group_id = aws_security_group.terraform-dev-vpc.id
+# #   description       = "Ingress rule for 8080"
+
+# #   cidr_ipv4   = "0.0.0.0/0"
+# #   from_port   = 8080
+# #   ip_protocol = "tcp"
+# #   to_port     = 8080
+# # }
