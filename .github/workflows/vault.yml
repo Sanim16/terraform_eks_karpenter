@@ -79,12 +79,12 @@ jobs:
 
         # aws eks update-kubeconfig --region region-code --name my-cluster
         # aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
-      - name: List files in the repository
-        run: |
-          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name dev-cluster
-          kubectl create namespace vault
-          helm install --dry-run --debug vault hashicorp/vault -f values.yaml --namespace vault
-        working-directory: ./vault
+      # - name: Dry run vault
+      #   run: |
+      #     aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name dev-cluster
+      #     kubectl create namespace vault
+      #     helm install --dry-run --debug vault hashicorp/vault -f values.yaml --namespace vault
+      #   working-directory: ./vault
       
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
