@@ -83,3 +83,13 @@ resource "aws_vpc_security_group_ingress_rule" "terraform-dev-vpc-https" {
   ip_protocol = "tcp"
   to_port     = 443
 }
+
+# resource "aws_vpc_security_group_ingress_rule" "terra8080" {
+#   security_group_id = aws_security_group.terraform-dev-vpc.id
+#   description       = "Ingress rule for 8080"
+
+#   cidr_ipv4   = "0.0.0.0/0"
+#   from_port   = 8080
+#   ip_protocol = "tcp"
+#   to_port     = 8080
+# }
